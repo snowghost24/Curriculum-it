@@ -1,0 +1,219 @@
+    <div class="page-header text-center">
+        <h1><i class="fa fa-book" aria-hidden="true"></i> Welcome to Curriculum-It!</h1>
+        {{!-- <h3><span class="fa fa-user"></span> Local</h3> --}}  
+    </div>
+    <br>
+    {{!-- navbar for top of the page to link to the homepage, the sign up form and the onoging course tracking page --}}
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="/profile" id="home">Home</a>
+        </li>
+        {{!-- <li class="nav-item">
+            <a class="nav-link" id= "enroll" href="/profile/allCourses">Enroll</a>
+        </li> --}}
+        {{!-- <li class="nav-item">
+            <a class="nav-link" id="track" href="#">Track Your Progress</a>
+        </li> --}}
+        <li class="nav-item">
+            <a href="/logout" class="nav-link" id="logout">Logout</a>
+        </li>
+        <div class="col-8">
+        </div>
+        <p class="ml4" class="h4">Hello{{#if passedData.user}} 
+            {{log passedData.user}}
+            {{#if passedData.user.local.name}} {{passedData.user.local.name}} {{/if}}
+            {{#if passedData.user.facebook.token}} {{passedData.user.facebook.name}} {{/if}}
+            {{#if passedData.user.twitter.token}} {{passedData.user.twitter.displayName }} {{/if}}
+            {{#if passedData.user.google.token}} {{passedData.user.google.name}} {{/if}}
+            {{else}}
+                 No address given
+            {{/if}}
+        </p>
+    </ul>
+    <br>
+    {{!-- <div class="row"> --}}
+
+        <!-- LOCAL INFORMATION -->
+        {{!-- <div class="col-sm-6"> --}}
+    <div class="well">
+        {{!-- <h2 class="center">Hello{{#if passedData.user}}
+        <ul class="list-reset">
+            {{#if passedData.user.local.name}}<li class="username">{{passedData.user.local.name}}</li>{{/if}}
+            {{#if passedData.user.facebook.token}}<li class="username">{{passedData.user.facebook.name}}</li>{{/if}}
+            {{#if passedData.user.twitter.token}}<li class="username">{{passedData.user.twitter.displayName }}</li>{{/if}}
+            {{#if passedData.user.google.token}}<li class="username">{{passedData.user.google.name}}</li>{{/if}}
+        </ul>
+            {{else}}
+                 No address given
+            {{/if}}
+        </h2> --}}
+            </div>
+        {{!-- </div> --}}
+    {{!-- </div> --}}
+<br>
+{{!-- buttons to select course names --}}
+<div class="container1">
+    <div class="row">
+        <div class="col" id="dropdown">
+                <p class="h3">Click to Enroll in Course</p>
+                <br>
+                
+                {{#each passedData.courses}}
+                     <form id="create" action="/profile/enroll/{{courseid}}/{{passedData.user.local.id}}" method="post">
+                        <input type="hidden" class="input" id="enrollCourse" value="{{courseid}}">  
+                        <input type="hidden" class="input" id="enrollCourse1" value="{{passedData.user.local.id}}"> 
+                         
+                        <button type="submit" class="btn btn-narrow mb1" class="class-btn" class="enroll">{{name}}</button>
+                    </form>
+                {{/each}}
+                {{!-- {{#each passedData.courses}}
+                <button type="button" class="btn btn-narrow mb1" class="class-btn">Course</button>
+                {{/each}} --}}
+                {{!-- <button type="button" class="btn btn-narrow mb1" class="class-btn">Course 2</button>
+                <button type="button" class="btn btn-narrow mb1" class="class-btn">Course 3</button>
+                <button type="button" class="btn btn-narrow mb1" class="class-btn">Course 4</button> --}}
+                {{!-- {{/each}} --}}
+                {{!-- <select class="class-selection">
+                    {{#each course}}
+                    <option class="selections"><p class="options">{{this.name}}</p></option>
+                    {{!-- <option class="selections"><p class="options">{{this.name}}</p></option>
+                    <option class="selections"><p class="options">{{this.name}}</p></option>
+                    <option class="selections"><p class="options">{{this.name}}</p></option> --}}
+                    {{!-- {{/each}} --}}
+                {{!-- </select> --}}
+        </div>
+{{!-- form to create own course --}}
+        <div class="col">
+            <form id="create" action="/profile/course" method="post">
+            <p class="h3">Create Your Own Course</p>
+            <label class="label">Course Name</label>
+            <input type="text" class="input"/>
+            <br>
+            <label class="label" id="second-label">Description</label>
+            <textarea class="textarea" rows="3"></textarea>
+            <br><br>
+            <input type="button" class="btn" id="submit" value="Submit">
+        </form>
+        </div>
+    </div>
+</div>
+<br>
+
+{{!-- content linked to the track your progress button, will be hidden until the link is clicked in the navbar --}}
+<div class="container2">
+    <div class="course-list">
+        <div class="row">
+            <div class="col">
+                <h3 class="mt1">Classes In-Progress</h3>                    
+            </div>
+            {{!-- <div class="col">
+                <h3 class="mt1">Pending Submissions</h3>
+            </div>
+            <div class="col">
+                <h3 class="mt1">Delete</h3>
+            </div> --}}
+        </div>
+        <div class="row">
+            <div class="col">
+                {{#each passedData.myCourses}}
+                    <p>{{this.name}} {{this.description}}</p>
+                    {{!-- {{#if passedData.myCourses}} --}}
+                    <button type="button" class="btn mb1" id="complete">Completed Course</button>
+                    {{!-- {{else}} --}}
+                    {{!-- {{/if}} --}}
+                    {{!-- {{#if passedData.myCourses}} --}}
+                    <button type="button" class="btn mb1" id="delete">Quit Course</button>
+                {{!-- {{else}} --}}
+                {{!-- {{/if}} --}}
+                {{/each}}   
+            </div> 
+            <div class="col">
+                <div class="form-check">
+                    {{!-- {{#if passedData.myCourses}}
+                    <button type="button" class="btn mb1" id="complete">Complete</button>
+                    {{else}}
+                        No Current Courses
+                    {{/if}} --}}
+                    {{!-- <input type="button" class="btn" id="pending" value="Completed"> --}}
+                </div>    
+            </div>  
+            <div class="col">
+                {{!-- {{#if passedData.myCourses}}
+                <button type="button" class="btn mb1" id="delete">Quit Course</button>
+                {{else}}
+                    No Courses to Delete
+                {{/if}} --}}
+                {{!-- <input type="button" class="btn" id="delete" value="Delete"> --}}
+            </div>                     
+        </div>
+    </div>
+    <br>
+    <div class="completed-list">
+        <h3 class="mt1">Completed Courses</h3>
+    </div>
+</div>
+
+
+                 {{!-- {{#if user.local.name}}
+                    <p>
+                        <strong>name</strong>: {{user.local.name }}<br>
+                      
+                    </p>
+                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                {{else}} 
+                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                {{/if}}
+            </div>
+        </div>
+        <!-- FACEBOOK INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
+                <!-- check if the user has this token (is the user authenticated with this social account) -->
+              
+                    {{#if user.facebook.token}}
+                    <p>
+                     
+                        <strong>name</strong>: {{user.facebook.name}}<br>
+                    </p>
+                    <a href="/unlink/facebook" class="btn btn-primary">Unlink</a>
+                    {{else}} 
+                    <a href="/connect/facebook" class="btn btn-primary">Connect Facebook</a>
+                    {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- TWITTER INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
+                
+                    {{#if user.twitter.token}}
+                    <p>
+                        <strong>display name</strong>: {{user.twitter.displayName }}<br>
+                       
+                    </p>
+                    <a href="/unlink/twitter" class="btn btn-info">Unlink</a>
+                
+                    {{else}}
+                    <a href="/connect/twitter" class="btn btn-info">Connect Twitter</a>
+                {{/if}}
+            </div>
+        </div>
+        <!-- GOOGLE INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3 class="text-danger"><span class="fa fa-google-plus"></span> Google+</h3>
+                
+                    {{#if user.google.token}}
+                    <p>
+                        <strong>name</strong>: {{user.google.name}}</p>
+                    <a href="/unlink/google" class="btn btn-danger">Unlink</a>
+                    {{else}}
+                    <a href="/connect/google" class="btn btn-danger">Connect Google</a>
+                    {{/if}}
+            </div>
+        </div>
+   
+</div> --}}

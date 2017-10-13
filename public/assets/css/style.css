@@ -1,0 +1,69 @@
+body{
+  background-image: url("/assets/img/swirl.png");
+}
+h2, h3{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/* #greeting{
+  text-align: right;
+} */
+.nav-tabs{
+  background-color: #7FD3EC;
+  border-bottom: 1px solid black;
+}
+.nav-link{
+  color: #050505;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/* #logout{
+  float: right;
+} */
+#dropdown{
+  background-color: #DBF3FA;
+  padding: 10px;
+}
+.class-selection{
+  background-color: #7FD3EC;
+  color:#050505;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-left: 35%;
+}
+form{
+  background-color: #DBF3FA;
+  padding: 10px;
+}
+.input{
+  margin-left: 13%;; 
+}
+.textarea{
+  margin-left: 16%;
+}
+.btn{
+  background-color: #7FD3EC;
+  color: #050505;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#submit{
+  margin-left: 40%;
+}
+.h3{
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  color: #050505;
+}
+.course-list{
+  text-align: center;
+  background-color: #DBF3FA;
+}
+.classes{
+  background-color: #DBF3FA;
+  padding: 10px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+.completed-list{
+  text-align: center;
+  background-color: #DBF3FA;
+  padding: 10px;
+}

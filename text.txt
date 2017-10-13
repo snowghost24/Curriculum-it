@@ -1,0 +1,33 @@
+FB_CLIENTID = 1541798349241263
+FB_CLIENTSECRET = dd5489d88cabdaa6e029f5ac4a2f6fd1
+
+TW_CONSUMERKEY = o0Q0ZkND9JFAVTh4jBK8lxblA
+TW_CONSUMERSECRET = 4AlJnW6N3UYDEu8wOIM8VeK916zX74tk5rj3nOq5MsAPp0Pkog
+
+GO_CLIENTID = PZftah_shr6ZNe5k-aC-y0eK
+GO_CLIENTSECRET = PZftah_shr6ZNe5k-aC-y0eK
+
+  host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database : process.env.DB_NAME
+
+    'facebookAuth' : {
+        'clientID'        : process.env.FB_CLIENTID
+        'clientSecret'    : process.env.FB_CLIENTSECRET
+        'callbackURL'     : 'http://localhost:8080/auth/facebook/callback',
+        'profileURL': 'https://graph.facebook.com/v2.5/me?fields=first_name,last_name,email'
+
+    },
+
+    'twitterAuth' : {
+        'consumerKey'        : progress.env.TW_CONSUMERKEY
+        'consumerSecret'     : process.TW_CONSUMERSECRET 
+        'callbackURL'        : 'http://localhost:8080/auth/twitter/callback'
+    },
+
+    'googleAuth' : {
+        'clientID'         : process.env.GO_CLIENTID
+        'clientSecret'     : 'PZftah_shr6ZNe5k-aC-y0eK',
+        'callbackURL'      : 'http://localhost:8080/auth/google/callback'
+    }

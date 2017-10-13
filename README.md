@@ -1,2 +1,1 @@
-# heroku-deploy
-testing heroku deplay
+# curriculum-it
